@@ -45,6 +45,9 @@ class Drawer:
                     interm.append(elem)
             interm.sort(key=lambda x: x[1])
 
+            if len(interm) < 2:
+                return
+
             for i in range(1, len(interm)):
                 first_position = (interm[i - 1][0][0] + self.pivot[0], self.pivot[1] - interm[i - 1][0][1])
                 second_position = (interm[i][0][0] + self.pivot[0], self.pivot[1] - interm[i][0][1])

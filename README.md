@@ -8,5 +8,6 @@
      pip install pygame_gui
      pip install pickle
   ## third run main.py:
+     cd 1Ctask
      python3 main.py
   

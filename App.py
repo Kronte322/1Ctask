@@ -4,6 +4,7 @@ import Data
 import Constants
 import Drawer
 import pickle
+import MouseEvents
 
 
 class App:
@@ -17,6 +18,7 @@ class App:
         self.Ui = Ui.Ui(self.data)
         self.drawer = Drawer.Drawer(self.display, self.data)
         pygame.display.set_caption(Constants.NAME_OF_APP)
+        self.mouse_events = MouseEvents.MouseEvents()
 
     def RunApp(self):
         clock = pygame.time.Clock()
@@ -28,6 +30,7 @@ class App:
                         pickle.dump(self.data, file, protocol=pickle.HIGHEST_PROTOCOL)
                     pygame.display.quit()
                 self.Ui.ProcessEvents(event, self.drawer)
+                self.mouse_events.PrecessEvents(event)
             self.display.fill(Constants.BACK_GROUND_COLOR)
             time_delta = clock.tick(Constants.TICK_RATE)
             self.Ui.Blit(time_delta, self.display)
